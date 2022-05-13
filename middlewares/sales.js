@@ -39,8 +39,23 @@ const verifyDate = (req, res, next) => {
   next();
 };
 
+const verifyWarrantyPeriod = (req, res, next) => {
+  const { infos } = req.body;
+
+  if (!infos.warrantyPeriod) {
+    throw { status: 400, message: "O campo warrantyPeriod é obrigatório" };
+  }
+
+  if (infos.warrantyPeriod > 3 || infos.warrantyPeriod < 1) {
+    throw { status: 400, message: "O campo warrantyPeriod precisa estar entre 1 e 3" };
+  }
+
+  next();
+}
+
 module.exports = {
   verifyName,
   verifyInfo,
-  verifyDate
+  verifyDate,
+  verifyWarrantyPeriod
 }

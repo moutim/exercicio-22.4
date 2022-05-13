@@ -10,10 +10,10 @@ app.post(
   middlewares.sales.verifyName,
   middlewares.sales.verifyInfo,
   middlewares.sales.verifyDate,
+  middlewares.sales.verifyWarrantyPeriod,
   (req, res) => {
-  // const { productName, infos } = req.body;
 
-  res.status(200).json({ message: "POST DEU CERTO!" });
+  res.status(200).json({ message: "Venda cadastrada com sucesso" });
 });
 
 app.use(middlewares.handleError);
